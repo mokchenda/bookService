@@ -1,14 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hascode.tutorial</groupId>
 	<artifactId>ws</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Book Lookup Web Service</name>
-	<description>hasCode.com Contract-First-Webservices Tutorial</description>
+	<description>hasCode.com Contract-First-Webservices Tutorial - 
+Source http://www.hascode.com/2011/08/contract-first-web-services-using-jax-ws-jax-b-maven-and-eclipse/</description>
 	<packaging>war</packaging>
-
-
 	<repositories>
 		<repository>
 			<id>java.net2</id>
@@ -34,25 +32,30 @@
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-rt</artifactId>
 			<version>2.2</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>istack-commons-runtime</artifactId>
+					<groupId>com.sun.istack</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>
-
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>com.heroku.sdk</groupId> -->
-			<!-- <artifactId>heroku-maven-plugin</artifactId> -->
-			<!-- <version>0.3.0</version> -->
-			<!-- <configuration> -->
-			<!-- <appName>bookService</appName> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			<!-- <plugin>-->
+			<!-- <groupId>com.heroku.sdk</groupId>-->
+			<!-- <artifactId>heroku-maven-plugin</artifactId>-->
+			<!-- <version>0.3.0</version>-->
+			<!-- <configuration>-->
+			<!-- <appName>bookService</appName>-->
+			<!-- </configuration>-->
+			<!-- </plugin>-->
 			<plugin>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>0.3.0</version>
 				<configuration>
-					<appName>myapp2015</appName>
+					<appName>cmok</appName>
 					<configVars>
 						<WEBAPP_RUNNER_OPTS>--expand-war</WEBAPP_RUNNER_OPTS>
 					</configVars>
@@ -75,18 +78,15 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-
-			<!-- <plugin> <groupId>org.mortbay.jetty</groupId> <artifactId>jetty-maven-plugin</artifactId> 
-				<version>8.1.16.v20140903</version> </plugin> -->
-
+			<!-- <plugin><groupId>org.mortbay.jetty</groupId><artifactId>jetty-maven-plugin</artifactId><version>8.1.16.v20140903</version></plugin>-->
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<!-- <version>8.1.9.v20130131</version> -->
+				<!-- <version>8.1.9.v20130131</version>-->
 				<version>9.2.1.v20140609</version>
 				<!-- == Jetty 9 NOTICE == -->
 				<!-- groupId is changed to "org.eclipse.jetty" from Jetty 9! -->
-				<!-- Update <version> to latest available at http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.jetty%22%20AND%20a%3A%22jetty-maven-plugin%22 -->
+				<!-- Update <version>to latest available at http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.jetty%22%20AND%20a%3A%22jetty-maven-plugin%22 -->
 				<configuration>
 					<httpConnector>
 						<!--host>localhost</host -->
@@ -94,7 +94,6 @@
 					</httpConnector>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -114,7 +113,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>
